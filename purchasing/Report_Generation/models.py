@@ -1,0 +1,35 @@
+from django.db import models
+
+# Create your models here.
+class Database_Fields(models.Model):
+    asset_tag = models.CharField(max_length=100,blank=True)
+    last_audit_date = models.DateField(auto_now=False,auto_now_add=False)
+    company = models.CharField(max_length=100,blank=True)
+    department = models.CharField(max_length=100,blank=True)
+    location = models.CharField(max_length=100,blank=True)
+    equipment_type = models.CharField(max_length=100,blank=True)
+    vendor = models.CharField(max_length=100,blank=True)
+    purchase_price = models.CharField(max_length=100,blank=True)
+    purchase_date = models.DateField(auto_now=False,auto_now_add=False)
+    equipment_model = models.CharField(max_length=100,blank=True)
+    assigned_to = models.CharField(max_length=100,blank=True)
+    equipment_status = models.CharField(max_length=100,blank=True)
+    serial_number = models.CharField(max_length=100,blank=True)
+    phone_number = models.CharField(max_length=12)
+    spare_location = models.CharField(max_length=100,blank=True)
+    verizon_cost_center = models.CharField(max_length=100,blank=True)
+    equipment_issue = models.TextField(blank=True)
+    date_modified = models.DateField(auto_now=False,auto_now_add=False)
+    modified_by = models.CharField(max_length=100,blank=True)
+    purchase_order_number = models.CharField(max_length=100,blank=True)
+    date_approved = models.CharField(max_length=100,blank=True)
+    approving_supervisor = models.CharField(max_length=100,blank=True)
+    carrier_tracking_number = models.CharField(max_length=100,blank=True)
+    equipment_name = models.CharField(max_length=100,blank=True)
+    ip_address = models.GenericIPAddressField(protocol='both')
+    konica_service_code = models.CharField(max_length=100,blank=True)
+    notes = models.TextField(blank=True)
+    item_type = models.CharField(max_length=100,blank=True)
+    path = models.CharField(max_length=100,blank=True)
+
+

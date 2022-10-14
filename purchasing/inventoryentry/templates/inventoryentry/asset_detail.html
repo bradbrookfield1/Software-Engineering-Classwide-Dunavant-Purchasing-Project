@@ -1,0 +1,93 @@
+{% extends "inventoryentry/base.html" %}
+{% block content %}
+
+{% block content1 %}{% endblock content1 %}
+	<h1>
+		Asset Details
+	</h1>
+	<div class="row">
+		<div class="col-md-6">
+			<h3>
+				Asset ID and Location Details
+			</h3>
+			<p>
+				Asset Tag: {{ object.asset_Tag }}<br>
+				Purchase Order Number: {{ object.purchase_Order_Number }}<br>
+				Company: {{ object.company }}<br>
+				Department: {{ object.department }}<br>
+				Location: {{ object.location }}<br>
+				IP Address: {{ object.iP_Address }}<br>
+				Spare Inventory Location: {{ object.spare_Inventory_Location }}<br>
+				Return of Merchandise Authorized? {{ object.RMA }}<br>
+			</p>
+			<h3>
+				Asset Date Details
+			</h3>
+			<p>
+				Approval Date: {{ object.approval_Date }}<br>
+				Last Audit Date: {{ object.last_Audit_Date }}<br>
+				Purchase Date: {{ object.purchase_Date }}<br>
+			</p>
+		</div>
+		<div class="col-md-6">
+			<h3>
+				Asset Specification Details
+			</h3>
+			<p>
+				Equipment Name: {{ object.equipment_Name }}<br>
+				Equipment Manufacturer: {{ object.equipment_Manufacturer }}<br>
+				Vendor: {{ object.vendor }}<br>
+				Equipment Type: {{ object.equipment_Type }}<br>
+				Tracking Number: {{ object.tracking_Number }}<br>
+				Equipment Model: {{ object.equipment_Model }}<br>
+				Price: {{ object.price }}<br>
+				Serial Number: {{ object.serial_Number }}<br>
+				Status: {{ object.status }}<br>
+				Phone: {{ object.phone }}<br>
+				Verizon Cost Center: {{ object.verizon_Cost_Center }}<br>
+				Attachments: {{ object.attachments }}<br>
+				Additional Specs: {{ object.additional_Specs }}<br>
+			</p>
+		</div>
+	</div>
+
+	<h1>
+		Incident Details
+	</h1>
+	<div class="row">
+		<div class="col-md-6">
+			<p>
+				Incident Status: {{ object.incident_Status }}<br>
+				Equipment Issues: {{ object.equipment_Issues }}<br>
+				Special Notes: {{ object.special_Notes }}<br>
+				Last Modified: {{ object.last_Modified }}<br>
+			</p>
+		</div>
+	</div>
+
+	<div>
+
+		<a href="{% url 'inventory:asset-update' pk=asset.pk %}">
+			<button class="btn btn-primary">
+				Update
+			</button>
+		</a>
+
+		<a href="{% url 'inventory:asset-list' %}">
+			<button class="btn btn-outline-info">
+				Home
+			</button>
+		</a>
+
+		{% if 'user.is_admin' %}
+			<a href="{% url 'inventory:confirm-delete' pk=asset.pk %}">
+				<button class="btn btn-outline-info">
+					Delete
+				</button>
+			</a>
+		{% endif %}
+
+	</div>
+
+	<br><br>
+{% endblock content %}

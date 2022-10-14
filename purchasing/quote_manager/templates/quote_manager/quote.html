@@ -1,0 +1,24 @@
+{% extends 'quote_manager/base.html' %}
+
+{% block content %}
+<ul>
+<h1>{{quote.name}}</h1> 
+Created On: {{quote.date_created}} Updated: {{quote.last_updated}}
+{% if quote.po_number != " " %}
+    <p>PO #: {{quote.po_number}}</p>
+{% endif %}
+<p>{{quote.details}}</p>
+<p>Product ID: {{quote.product_id}}</p>
+<p>Vendor: {{quote.vendor}}</p>
+<p>Price: ${{quote.price}}</p>
+<form method="post">
+    {% csrf_token %}    
+    {{ form }}
+    <button type="submit", name="save"> Save </button>
+</form>
+<h2>{{quote.quote_request.name}}</h2>
+Created On: {{quote.quote_request.date_created}} Updated: {{quote.quote_request.last_updated}}
+<p>{{quote.quote_request.details}}</p>
+<p>Vendor: {{quote.quote_request.vendor}}</p>
+</ul>
+{% endblock content %}

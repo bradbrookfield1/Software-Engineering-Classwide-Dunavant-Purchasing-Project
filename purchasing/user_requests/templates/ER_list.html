@@ -1,0 +1,37 @@
+{%extends 'base.html'%}
+{%block title%}
+All Requests
+{%endblock%}
+
+{%block content%}
+<!DOCTYPE html>
+<html lang="en">
+    <style type = 'text/css'>
+        .ER {
+            align-items: center;
+        }
+    </style>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipment Request List</title>
+</head>
+<body>
+    <h1 ALIGN='center'>Equipment Request List</h1>
+    <div class ="Requests">
+        <hr size = '2' width = '100%' color ='grey'>
+        {% for er in ER %}
+            <div ALIGN='center' class ="ER">
+                <h3><a href='#'>{{er.user_request.equipment_name}}</a></h3>
+                <p><strong>User</strong>: {{er.user_request.author}}</p>
+                <p><strong>Equipment Number</strong>: {{er.user_request.equipment_number}}</p>
+                <p><strong>Created</strong>: {{er.user_request.date_created}}</p>
+                <p><strong>Status</strong>: {{er.status}}</p>
+                <hr size = '2' width = '100%' color ='grey'>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+{%endblock%}
+</html>

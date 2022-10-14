@@ -1,0 +1,21 @@
+{% extends 'quoting_base.html' %}
+
+{% block title %}Quote Information Input{% endblock %}
+
+{% block nav-links %}
+
+    <a class="nav-link active" aria-current="page" href="{% url 'quoting:home' %}">Home</a>
+    <a class="nav-link" href="{% url 'quoting:requests_index' %}">Requests</a>
+    <a class="nav-link" href="{% url 'quoting:quotes_index' %}">Quotes</a>
+    
+{% endblock %}
+
+{% block content %}
+
+<div class="mx-auto" style="width: 50%;">
+    <p>Enter Quote Information</p>
+    {% load crispy_forms_tags %}
+    {% crispy pdf_input %}
+</div>
+
+{% endblock %}

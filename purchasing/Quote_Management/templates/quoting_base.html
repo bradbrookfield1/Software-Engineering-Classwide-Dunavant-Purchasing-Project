@@ -1,0 +1,47 @@
+<!-- templates/quoting_base.html -->
+<!-- Base template but with navbars and general website/webapp features -->
+<!DOCTYPE html>
+<html>
+  {% load bootstrap5 %}
+  {% bootstrap_css %}
+  {% bootstrap_javascript %}
+  {% load static %}
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'resources/css/style.css' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://www.dunavant.com/sites/505/images/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="https://www.dunavant.com/sites/505/images/favicons/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://www.dunavant.com/sites/505/images/favicons/favicon-16x16.png">
+    <title>{% block title %}Dunavant Quoting{% endblock %}</title>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light"> <!--TODO add dark mode toggle in settings menu-->
+      <div class="container-fluid">
+        <div class="me-auto">
+          <a class="navbar-brand" href="{% url 'quoting:home' %}">Quote Management</a>
+        </div>
+        <a class="navbar-brand mx-auto" href="{% url 'home' %}">
+          <img src="https://www.dunavant.com/sites/505/images/logo.svg" alt="" height="40" class="d-inline-block align-text-top">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="ms-auto">
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup"> <!--TODO make navbar responsive for mobile viewing (remove app name and only keep toggle menu with dunavant logo)-->
+            <div class="navbar-nav ms-auto">
+              {% block nav-links %}
+              {% endblock %}
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <main>
+      {% block content %}
+      {% endblock %}
+    </main>
+  </body>
+</html>

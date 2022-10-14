@@ -1,0 +1,25 @@
+<!-- templates/registration/login.html -->
+{% extends 'base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+
+<style>
+  .is-centered {
+      margin: auto;
+      max-width: 50%;
+      margin-top: 20%;
+      margin-bottom: 20%;
+  }
+</style>
+
+<div class="is-centered">
+  <h2>Log In</h2>
+  <form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Log In</button>
+  </form>
+</div>
+{% endblock %}

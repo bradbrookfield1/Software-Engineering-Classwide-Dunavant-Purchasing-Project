@@ -1,0 +1,15 @@
+{% extends 'quoting_base.html' %}
+
+{% block title %}Quote{% endblock %} <!--TODO find better title for quote detail page-->
+
+{% block content %}
+
+<h1>{{ quote_data.quote_name }}</h1>
+<p>{{ quote_data.quote_cost }}</p>
+<p>{{ quote_data.equipment_name }}</p>
+
+<form action="{% url 'quoting:quotes_index' %}">
+    <button type="submit" class="my-4 btn btn-secondary">Back</button>
+</form>
+
+{% endblock %}

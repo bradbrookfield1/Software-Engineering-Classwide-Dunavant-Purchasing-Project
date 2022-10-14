@@ -1,0 +1,35 @@
+{% extends "inventoryentry/base.html" %}
+{% block content %}
+	<div class="row">
+		<div class="col-md">
+			<h1>
+				Log List
+				{% if 'user.is_admin' %}
+					- Admin View
+				{% endif %}
+			</h1>
+			<p>
+				{% for log in object_list %}
+					<article class="media content-section">
+						<div class="col-md-10">
+							{{ log.author }} {{ log.action }} the asset with tag {{ log.asset }}<br>
+							<small class="text-muted">
+								{{ log.date|date:"F d, Y, h:i a" }}
+							</small><br>
+						</div>
+						<div class="col-md-4">
+							{% if 'user.is_admin' %}
+								<a href="{% url 'inventory:log-confirm-delete' pk=log.pk %}">
+									<button class="btn btn-outline-danger">
+										Delete
+									</button>
+								</a>
+							{% endif %}
+						</div>
+					</article>
+				{% endfor %}
+			</p>
+		</div>
+	</div>
+	<br><br>
+{% endblock content %}

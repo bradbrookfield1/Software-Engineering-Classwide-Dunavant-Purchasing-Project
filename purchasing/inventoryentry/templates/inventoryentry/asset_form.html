@@ -1,0 +1,94 @@
+{% extends "inventoryentry/base.html" %}
+{% block content %}
+	<form method="POST">
+		{% csrf_token %}
+		<fieldset class="form-group">
+			<h1>
+				Asset Detail Form 
+				{% if 'user.is_admin' %}
+					- Admin View
+				{% endif %}
+			</h1>
+			<div class="row">
+				<div class="col-md-6">
+					<h3>
+						Asset ID and Location Details
+					</h3>
+					<p>
+						Asset Tag: {{ form.asset_Tag }}<br><br>
+						Purchase Order Number: {{ form.purchase_Order_Number }}<br><br>
+						Company: {{ form.company }}<br><br>
+						Department: {{ form.department }}<br><br>
+						Location: {{ form.location }}<br><br>
+						IP Address: {{ form.iP_Address }}<br><br>
+						Spare Inventory Location: {{ form.spare_Inventory_Location }}<br><br>
+						
+						{% if 'user.is_admin' %}
+							Return of Merchandise Authorized? {{ form.RMA }}<br><br>
+						{% endif %}
+					</p>
+					<h3>
+						Asset Date Details
+					</h3>
+					<p>
+						Approval Date: {{ form.approval_Date }}<br><br>
+						Last Audit Date: {{ form.last_Audit_Date }}<br><br>
+						Purchase Date: {{ form.purchase_Date }}<br><br>
+					</p>
+				</div>
+				<div class="col-md-6">
+					<h3>
+						Asset Specification Details
+					</h3>
+					<p>
+						Equipment Name: {{ form.equipment_Name }}<br><br>
+						Equipment Manufacturer: {{ form.equipment_Manufacturer }}<br><br>
+						Vendor: {{ form.vendor }}<br><br>
+						Equipment Type: {{ form.equipment_Type }}<br><br>
+						Tracking Number: {{ form.tracking_Number }}<br><br>
+						Equipment Model: {{ form.equipment_Model }}<br><br>
+						Price: {{ form.price }}<br><br>
+						Serial Number: {{ form.serial_Number}}<br><br>
+						Status: {{ form.status }}<br><br>
+						Phone: {{ form.phone }}<br><br>
+						Verizon Cost Center: {{ form.verizon_Cost_Center }}<br><br>
+						Attachments: {{ form.attachments }}<br><br>
+						Additional Specs: <br>{{ form.additional_Specs }}<br><br>
+					</p>
+				</div>
+			</div>
+			<h1>
+				Incident Details
+			</h1>
+			<div class="row">
+				<div class="col-md-6">
+					<p>
+						Incident Status: {{ form.incident_Status }}<br>
+						Equipment Issues: <br>{{ form.equipment_Issues }}<br>
+					</p>
+				</div>
+				<div class="col-md-6">
+					<p>
+						Last Modified: {{ form.last_Modified }}<br>
+						Special Notes: <br>{{ form.special_Notes }}<br>
+					</p>
+				</div>
+			</div>
+		</fieldset>
+
+		<div class="form-group">
+			<button type="submit" class="btn btn-primary">
+				Submit
+			</button>
+			<button type="reset" class="btn btn-outline-info">
+				Reset
+			</button>
+			<a href="{% url 'inventory:asset-list' %}">
+				<button type="button" class="btn btn-outline-info">
+					Cancel
+				</button>
+			</a>
+		</div>
+	</form>
+	<br><br>
+{% endblock content %}

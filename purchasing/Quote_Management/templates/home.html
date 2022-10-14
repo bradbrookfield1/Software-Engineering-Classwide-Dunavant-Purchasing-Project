@@ -1,0 +1,18 @@
+<!-- templates/home.html-->
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+  Hi {{ user.username }}!
+  <h2><a href="{% url 'quoting:home' %}">Quote Management</a></h2>
+  <h2><a href="{% url 'inventory:asset-list' %}">Inventory Management</a></h2>
+  
+  <p><a href="{% url 'logout' %}">Log Out</a></p>
+{% else %}
+  <p>You are not logged in</p>
+  <li><a href="{% url 'quoting:create_user' %}">Create User Account</a></li>
+  <li><a href="{% url 'login' %}">Log In</a></li>
+{% endif %}
+{% endblock %}

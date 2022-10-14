@@ -1,0 +1,22 @@
+{% extends 'quoting_base.html' %}
+
+{% block title %}Request{% endblock %}
+
+{% block content %}
+
+<h1>{{ request_data.request_name }}</h1>
+<p>{{ request_data.equipment_name }}</p>
+<p>{{ request_data.request_date }}</p>
+
+{% if just_submitted %}
+    <form action="{% url 'quoting:requests_index' %}">
+        <button type="submit" class="my-4 btn btn-secondary">Back</button>
+        <a href="{% url 'quoting:requestform' %}" class="btn btn-danger">Submit Another Request</a>
+    </form>
+{% else %}
+    <form action="{% url 'quoting:requests_index' %}">
+        <button type="submit" class="my-4 btn btn-secondary">Back</button>
+    </form>
+{% endif %}
+
+{% endblock %}

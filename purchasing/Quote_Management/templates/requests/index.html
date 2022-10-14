@@ -1,0 +1,29 @@
+{% extends 'quoting_base.html' %}
+
+{% block title %}Requests Index{% endblock %}
+
+{% block nav-links %}
+
+    <a class="nav-link" href="{% url 'quoting:home' %}">Home</a>
+    <a class="nav-link active" aria-current="page" href="{% url 'quoting:requests_index' %}">Requests</a>
+    <a class="nav-link" href="{% url 'quoting:quotes_index' %}">Quotes</a>
+
+{% endblock %}
+
+{% block content %}
+
+{% if latest_request_list %}
+    <div class="list-group">
+        {% for request in latest_request_list %}
+            <a href="{% url 'quoting:request_detail' request.id %}" class="list-group-item list-group-item-action">{{ request.request_name }}</a>
+        {% endfor %}
+    </div>
+    {% else %}
+        <p>No requests have been made.</p>
+{% endif %}
+
+<form action="{% url 'quoting:home' %}">
+    <button type="submit" class="my-4 btn btn-secondary">Back to Quote Management</button>
+</form>
+
+{% endblock %}

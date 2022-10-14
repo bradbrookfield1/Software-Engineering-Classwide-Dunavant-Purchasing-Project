@@ -1,0 +1,53 @@
+{% extends 'quoting_base.html' %}
+
+{% block title %}Quote Request Form{% endblock %} <!--TODO find better title for quote detail page-->
+
+{% block nav-links %}
+
+    <a class="nav-link active" aria-current="page" href="{% url 'quoting:home' %}">Home</a>
+    <a class="nav-link" href="{% url 'quoting:requests_index' %}">Requests</a>
+    <a class="nav-link" href="{% url 'quoting:quotes_index' %}">Quotes</a>
+    
+{% endblock %}
+
+{% block content %}
+
+<!--Quick CSS-->
+<!--TODO move development CSS to separate stylesheet-->
+<style>
+  .i-am-centered {
+      margin: auto;
+      max-width: 40%;
+      padding-top: 10%;
+      margin-bottom: 10%;
+  }
+  .asteriskField {
+    display: none;
+  }
+</style>
+
+<div class="container">
+  <!--Django Request Form-->
+  <div class="i-am-centered">
+    <h2 align="center" class="my-4">Submit a new request</h2>
+    <p align="center"><strong>User: {{ requestee }}</strong></p>
+    {% load crispy_forms_tags %}
+    {% crispy request_form %}
+  </div>
+  <!--Django Request Models-->
+  <h2 class="my-4">Requests</h2>
+  <div class="row">
+    {% for r in requests %}
+    <div class="col-lg-4 col-md-6 col-sm-12 pb-4">
+      <div class="card h-100 p-4">
+        <h4>{{r.request_name}}</h4>
+        <p class="text-muted">{{r.request_date}}</p>
+      </div>
+    </div>
+    {% empty %}
+    <p>No requests submitted.</p>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}

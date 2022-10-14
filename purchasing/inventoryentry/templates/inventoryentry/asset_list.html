@@ -1,0 +1,32 @@
+{% extends "inventoryentry/base.html" %}
+{% block content %}
+	<div class="row">
+		<div class="col-md">
+			<h1>
+				Asset List
+			</h1>
+			<article class="media content-section">
+				<p>
+					{% for asset in object_list %}
+						<a href="{% url 'inventory:asset-detail' pk=asset.pk %}">
+							{{ asset.asset_Tag }}
+						</a>
+						 - 
+						{% if asset.equipment_Type %}
+							{{ asset.equipment_Type }}
+						{% else %}
+							*Equipment Type*
+						{% endif %}
+						 - 
+						{% if asset.equipment_Model %}
+							{{ asset.equipment_Model }}
+						{% else %}
+							*Equipment Model*
+						{% endif %}<br>
+					{% endfor %}
+				</p>
+			</article>
+		</div>
+	</div>
+	<br><br>
+{% endblock content %}

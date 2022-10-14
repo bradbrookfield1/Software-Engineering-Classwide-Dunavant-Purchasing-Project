@@ -1,0 +1,26 @@
+{% extends 'quoting_base.html' %}
+
+{% block title %}Quoting Home{% endblock %}
+
+{% block nav-links %}
+
+    <a class="nav-link active" aria-current="page" href="{% url 'quoting:home' %}">Home</a>
+    <a class="nav-link" href="{% url 'quoting:requests_index' %}">Requests</a>
+    <a class="nav-link" href="{% url 'quoting:quotes_index' %}">Quotes</a>
+    
+{% endblock %}
+
+{% block content %}
+    
+    <div class="list-group">
+        <a href="{% url 'quoting:requests_index' %}" class="list-group-item list-group-item-action">Requests</a>
+        <a href="{% url 'quoting:quotes_index' %}" class="list-group-item list-group-item-action">Quotes</a>
+        <a href="{% url 'quoting:requestform' %}" class="list-group-item list-group-item-action">Submit a Request</a>
+        <a href="{% url 'quoting:input_pdf' %}" class="list-group-item list-group-item-action">Update Quote (Eventually Attach to Quote) <!--this should later be implemented as a button attached to the quote listing and not a separate page-->
+        <a href="{% url 'home' %}" class="list-group-item list-group-item-action">Back to App Directory</a>
+    </div>
+    <form action="{% url 'logout' %}">
+        <button type="submit" class="my-4 btn btn-danger">Logout</button>
+    </form>
+
+{% endblock %}

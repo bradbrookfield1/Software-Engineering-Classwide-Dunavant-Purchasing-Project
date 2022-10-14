@@ -1,0 +1,17 @@
+{% extends 'quote_manager/base.html' %}
+{% block content %}
+<ul>
+<h1>Create Quote</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form1.as_p }}
+    <button type="submit", name="save"> Create Quote</button>
+</form>
+<h1>Create Quote Request</h1>
+<form method="post">
+    {% csrf_token %}
+    {{ form2.as_p }}
+    <button type="submit", name="save"> Create Quote Request</button>
+</form>
+</ul>
+{% endblock content %}
